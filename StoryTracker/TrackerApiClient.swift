@@ -14,7 +14,7 @@ class Profile {
 
 struct ErrorResponse {
     let body: String
-    let error: NSError
+    let error: NSError?
 }
 
 class TrackerApiClient {
@@ -29,17 +29,21 @@ class TrackerApiClient {
     func basicAuthString(#username: String, password: String) -> String {
         let authString = "\(username):\(password)"
         let data = authString.dataUsingEncoding(NSASCIIStringEncoding)
-        return data.base64Encoding()
+        if let goodData = data {
+            return goodData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithCarriageReturn)
+        }
+        return ""
     }
     
     func login(username: String, password: String, completion: (Profile?, ErrorResponse?) -> ()) {
         let req = NSMutableURLRequest(URL: NSURL(string: Endpoint.Me.toRaw()))
-        req.HTTPMethod = "POST"
+        req.HTTPMethod = "GET"
         
         let authString = basicAuthString(username: username, password: password)
+        println(authString)
         req.setValue("Basic \(authString)", forHTTPHeaderField: "Authorization")
         
-        let task = session.dataTaskWithRequest(req, completionHandler: {
+        let task = session.dataTaskWithRequest(req) {
             (data: NSData!, response: NSURLResponse!, error: NSError!) in
             if let httpResponse = response as? NSHTTPURLResponse {
                 println("Received HTTP \(httpResponse.statusCode)")
@@ -47,20 +51,21 @@ class TrackerApiClient {
                     println(NSString(data: data, encoding: NSUTF8StringEncoding))
                 } else {
                     let body = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    completion(nil, ErrorResponse(body: body, error: error))
+                    println(error)
+                    completion(Optional<Profile>.None, ErrorResponse(body: body, error: error))
                 }
             } else {
                 println("response was not an HTTP response, go fishing.")
             }
-            })
+        }
         task.resume()
     }
     
-    func getProjects(token: String, completion: (Project[]?, ErrorResponse?) -> ()) {
+    func getProjects(token: String, completion: ([Project]?, ErrorResponse?) -> ()) {
         let req = NSMutableURLRequest(URL: NSURL(string: Endpoint.ProjectList.toRaw()))
         req.addValue(token, forHTTPHeaderField: "X-TrackerToken")
-
-        let task = session.dataTaskWithRequest(req, completionHandler: {
+        
+        let task = session.dataTaskWithRequest(req) {
             (data: NSData!, response: NSURLResponse!, error: NSError!) in
             if let httpResponse = response as? NSHTTPURLResponse {
                 println("Received HTTP \(httpResponse.statusCode)")
@@ -73,19 +78,19 @@ class TrackerApiClient {
             } else {
                 println("response was not an HTTP response, go fishing.")
             }
-            })
+        }
         task.resume()
     }
     
     
-    func parseProjectJson(data: NSData, completion: (Project[]?, ErrorResponse?) -> ()) {
+    func parseProjectJson(data: NSData, completion: ([Project]?, ErrorResponse?) -> ()) {
         Dispatch.background() {
             var error: NSError?
             let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments,
                 error: &error) as Array<Dictionary<String, AnyObject>>
             
-            if json != nil {
-                var projects = Project[]()
+            if error == nil {
+                var projects = [Project]()
                 for projectJson in json {
                     projects += Project(attributes: projectJson)
                 }
@@ -101,5 +106,4 @@ class TrackerApiClient {
             
         }
     }
-
 }
