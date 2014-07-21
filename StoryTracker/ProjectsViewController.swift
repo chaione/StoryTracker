@@ -10,11 +10,8 @@ import UIKit
 
 class ProjectsViewController: UITableViewController {
     
-    var projects: Project[] = []
+    var projects: [Project] = []
 
-    @lazy var sessionConfig: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    @lazy var session: NSURLSession = NSURLSession(configuration: self.sessionConfig)
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 

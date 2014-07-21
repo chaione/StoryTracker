@@ -10,11 +10,11 @@ import UIKit
 
 class LoginViewController: UITableViewController {
 
-    @IBOutlet var usernameTextField: UITextField
-    @IBOutlet var passwordTextField: UITextField
-    @IBOutlet var loginButton: UIButton
+    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var loginButton: UIButton!
 
-    @lazy var apiClient = TrackerApiClient()
+    lazy var apiClient = TrackerApiClient()
 
     @IBAction func loginTapped(sender: AnyObject) {
         println("logging in...")

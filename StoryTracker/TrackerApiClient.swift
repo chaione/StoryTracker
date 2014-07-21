@@ -23,13 +23,13 @@ class TrackerApiClient {
         case ProjectList = "https://www.pivotaltracker.com/services/v5/project/:id"
     }
     
-    @lazy var sessionConfig: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    @lazy var session: NSURLSession = NSURLSession(configuration: self.sessionConfig)
+    lazy var sessionConfig: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    lazy var session: NSURLSession = NSURLSession(configuration: self.sessionConfig)
     
     func basicAuthString(#username: String, password: String) -> String {
         let authString = "\(username):\(password)"
         let data = authString.dataUsingEncoding(NSASCIIStringEncoding)
-        return data.base64Encoding()
+        return data!.base64EncodedStringWithOptions(.Encoding76CharacterLineLength)
     }
     
     func login(username: String, password: String, completion: (Profile?, ErrorResponse?) -> ()) {
@@ -56,7 +56,7 @@ class TrackerApiClient {
         task.resume()
     }
     
-    func getProjects(token: String, completion: (Project[]?, ErrorResponse?) -> ()) {
+    func getProjects(token: String, completion: ([Project]?, ErrorResponse?) -> ()) {
         let req = NSMutableURLRequest(URL: NSURL(string: Endpoint.ProjectList.toRaw()))
         req.addValue(token, forHTTPHeaderField: "X-TrackerToken")
 
@@ -78,15 +78,15 @@ class TrackerApiClient {
     }
     
     
-    func parseProjectJson(data: NSData, completion: (Project[]?, ErrorResponse?) -> ()) {
+    func parseProjectJson(data: NSData, completion: ([Project]?, ErrorResponse?) -> ()) {
         Dispatch.background() {
             var error: NSError?
             let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments,
-                error: &error) as Array<Dictionary<String, AnyObject>>
+                error: &error) as? Array<Dictionary<String, AnyObject>>
             
-            if json != nil {
-                var projects = Project[]()
-                for projectJson in json {
+            if json {
+                var projects = [Project]()
+                for projectJson in json! {
                     projects += Project(attributes: projectJson)
                 }
                 
