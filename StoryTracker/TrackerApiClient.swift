@@ -9,10 +9,6 @@
 import Foundation
 import ChaiKit
 
-class Profile {
-    
-}
-
 struct ErrorResponse {
     let body: String
     let error: NSError?
@@ -50,6 +46,10 @@ class TrackerApiClient {
                 println("Received HTTP \(httpResponse.statusCode)")
                 if httpResponse.statusCode == 200 {
                     println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                    let profile = self.buildProfileFromJSONData(data)
+                    Dispatch.main {
+                        completion(profile, nil)
+                    }
                 } else {
                     let body = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println(error)
@@ -62,6 +62,18 @@ class TrackerApiClient {
             }
         }
         task.resume()
+    }
+    
+    func buildProfileFromJSONData(data: NSData) -> Profile {
+        var error: NSError?
+        switch NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: &error) {
+            case let .Some(dict as NSDictionary):
+                return Profile.fromDictionary(dict)
+            
+            default:
+                println("Wasn't a dictionary, I'm outta here")
+                abort()
+        }
     }
     
     func getProjects(token: String, completion: ([Project]?, ErrorResponse?) -> ()) {

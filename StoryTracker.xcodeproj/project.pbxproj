@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B197C411559C42149CCAF962 /* libPods-StoryTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB952BC065940D08CC10EEA /* libPods-StoryTracker.a */; };
+		B5232A731982CBD000E9DC97 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5232A721982CBD000E9DC97 /* Profile.swift */; };
+		B5232A751982CE5D00E9DC97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5232A741982CE5D00E9DC97 /* Constants.swift */; };
 		B53A88D1195DDAFD0096E45E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A88D0195DDAFD0096E45E /* AppDelegate.swift */; };
 		B53A88D3195DDAFD0096E45E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B53A88D2195DDAFD0096E45E /* Images.xcassets */; };
 		B53A88DF195DDAFD0096E45E /* StoryTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A88DE195DDAFD0096E45E /* StoryTrackerTests.swift */; };
@@ -103,6 +105,8 @@
 		7FB952BC065940D08CC10EEA /* libPods-StoryTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StoryTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87FD6183D29F409787707709 /* Pods-StoryTracker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryTracker.xcconfig"; path = "Pods/Pods-StoryTracker.xcconfig"; sourceTree = "<group>"; };
 		B5232A711982C81500E9DC97 /* Pods-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pods-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5232A721982CBD000E9DC97 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B5232A741982CE5D00E9DC97 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B53A88CB195DDAFD0096E45E /* StoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53A88CF195DDAFD0096E45E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B53A88D0195DDAFD0096E45E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				B53A88D0195DDAFD0096E45E /* AppDelegate.swift */,
 				B53A88D2195DDAFD0096E45E /* Images.xcassets */,
 				B53A88CE195DDAFD0096E45E /* Supporting Files */,
+				B5232A741982CE5D00E9DC97 /* Constants.swift */,
 			);
 			path = StoryTracker;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				B53A88EC195DDC630096E45E /* Project.swift */,
+				B5232A721982CBD000E9DC97 /* Profile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -530,12 +536,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58981FD1965C75C004FE049 /* CredentialStore.swift in Sources */,
+				B5232A731982CBD000E9DC97 /* Profile.swift in Sources */,
 				B53A88EA195DDB5C0096E45E /* ProjectsViewController.swift in Sources */,
 				B53A88D1195DDAFD0096E45E /* AppDelegate.swift in Sources */,
 				B58981FF1965CBEB004FE049 /* LoginViewController.swift in Sources */,
 				B58982021965CC85004FE049 /* TrackerApiClient.swift in Sources */,
 				B53A88ED195DDC630096E45E /* Project.swift in Sources */,
 				B58982051965CEE4004FE049 /* Dispatch.swift in Sources */,
+				B5232A751982CE5D00E9DC97 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

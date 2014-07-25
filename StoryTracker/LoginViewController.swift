@@ -21,7 +21,11 @@ class LoginViewController: UITableViewController {
         apiClient.login(usernameTextField.text, password: passwordTextField.text,
             completion: { (profile, errorResponse) in
                 if profile {
-//                    CredentialStore().trackerApiToken = profile!.apiToken
+                    CredentialStore().trackerApiToken = profile!.apiToken
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(StoryTrackerNotifications.UserLoggedIn.toRaw(),
+                        object: self,
+                        userInfo: [ "profile" : profile! ])
                 } else {
                     println("ERROR logging in: \(errorResponse?.error)")
                     let alert = UIAlertController(title: "Invalid login",
