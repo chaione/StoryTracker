@@ -17,7 +17,7 @@ struct ErrorResponse {
 class TrackerApiClient {
     enum Endpoint: String {
         case Me = "https://www.pivotaltracker.com/services/v5/me"
-        case ProjectList = "https://www.pivotaltracker.com/services/v5/project/:id"
+        case ProjectList = "https://www.pivotaltracker.com/services/v5/projects"
     }
     
     lazy var sessionConfig: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
