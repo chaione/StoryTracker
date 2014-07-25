@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ChaiKit
 
 class Profile {
     
@@ -14,7 +15,7 @@ class Profile {
 
 struct ErrorResponse {
     let body: String
-    let error: NSError
+    let error: NSError?
 }
 
 class TrackerApiClient {
