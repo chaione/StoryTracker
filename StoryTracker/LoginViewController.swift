@@ -19,8 +19,17 @@ class LoginViewController: UITableViewController {
     @IBAction func loginTapped(sender: AnyObject) {
         println("logging in...")
         apiClient.login(usernameTextField.text, password: passwordTextField.text,
-            completion: { (profile, error) in
-                
+            completion: { (profile, errorResponse) in
+                if profile {
+//                    CredentialStore().trackerApiToken = profile!.apiToken
+                } else {
+                    println("ERROR logging in: \(errorResponse?.error)")
+                    let alert = UIAlertController(title: "Invalid login",
+                        message: "Check your credentials and try again",
+                        preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             })
     }
     

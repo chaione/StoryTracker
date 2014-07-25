@@ -53,7 +53,9 @@ class TrackerApiClient {
                 } else {
                     let body = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println(error)
-                    completion(Optional<Profile>.None, ErrorResponse(body: body, error: error))
+                    Dispatch.main {
+                        completion(Optional<Profile>.None, ErrorResponse(body: body, error: error))
+                    }
                 }
             } else {
                 println("response was not an HTTP response, go fishing.")

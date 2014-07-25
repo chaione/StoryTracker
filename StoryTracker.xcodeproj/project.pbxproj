@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B197C411559C42149CCAF962 /* libPods-StoryTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB952BC065940D08CC10EEA /* libPods-StoryTracker.a */; };
 		B53A88D1195DDAFD0096E45E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A88D0195DDAFD0096E45E /* AppDelegate.swift */; };
 		B53A88D3195DDAFD0096E45E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B53A88D2195DDAFD0096E45E /* Images.xcassets */; };
 		B53A88DF195DDAFD0096E45E /* StoryTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A88DE195DDAFD0096E45E /* StoryTrackerTests.swift */; };
@@ -99,6 +100,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7FB952BC065940D08CC10EEA /* libPods-StoryTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StoryTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FD6183D29F409787707709 /* Pods-StoryTracker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryTracker.xcconfig"; path = "Pods/Pods-StoryTracker.xcconfig"; sourceTree = "<group>"; };
+		B5232A711982C81500E9DC97 /* Pods-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pods-Bridging-Header.h"; sourceTree = "<group>"; };
 		B53A88CB195DDAFD0096E45E /* StoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53A88CF195DDAFD0096E45E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B53A88D0195DDAFD0096E45E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57E71FD197DC03600E0FC80 /* ChaiKit.framework in Frameworks */,
+				B197C411559C42149CCAF962 /* libPods-StoryTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +170,8 @@
 				B57E71E9197DC03600E0FC80 /* ChaiKit */,
 				B57E71F6197DC03600E0FC80 /* ChaiKitTests */,
 				B53A88CC195DDAFD0096E45E /* Products */,
+				87FD6183D29F409787707709 /* Pods-StoryTracker.xcconfig */,
+				DAF02FBA26E04D8792426F28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				B53A88CF195DDAFD0096E45E /* Info.plist */,
+				B5232A711982C81500E9DC97 /* Pods-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -303,6 +311,14 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		DAF02FBA26E04D8792426F28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FB952BC065940D08CC10EEA /* libPods-StoryTracker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -321,10 +337,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B53A88E2195DDAFD0096E45E /* Build configuration list for PBXNativeTarget "StoryTracker" */;
 			buildPhases = (
+				C1D67B6B04C24A42AA880179 /* Check Pods Manifest.lock */,
 				B53A88C7195DDAFD0096E45E /* Sources */,
 				B53A88C8195DDAFD0096E45E /* Frameworks */,
 				B53A88C9195DDAFD0096E45E /* Resources */,
 				B57E7206197DC03600E0FC80 /* Embed Frameworks */,
+				B0922E5802A440DFA5FA7D78 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +490,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0922E5802A440DFA5FA7D78 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-StoryTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1D67B6B04C24A42AA880179 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B53A88C7195DDAFD0096E45E /* Sources */ = {
@@ -637,23 +688,27 @@
 		};
 		B53A88E3195DDAFD0096E45E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87FD6183D29F409787707709 /* Pods-StoryTracker.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = StoryTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StoryTracker/Pods-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		B53A88E4195DDAFD0096E45E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87FD6183D29F409787707709 /* Pods-StoryTracker.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = StoryTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StoryTracker/Pods-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -809,6 +864,7 @@
 				B57E7202197DC03600E0FC80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B57E7207197DC03600E0FC80 /* Build configuration list for PBXNativeTarget "ChaiKitTests" */ = {
 			isa = XCConfigurationList;
@@ -817,6 +873,7 @@
 				B57E7204197DC03600E0FC80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,18 +9,16 @@
 import UIKit
 
 class CredentialStore: NSObject {
-    enum UserDefaultKeys: String {
+    enum CredentialKeys: String {
         case TrackerApiKey = "trackerApiToken"
     }
     
     var trackerApiToken: NSString? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.TrackerApiKey.toRaw()) as? String
+            return SSKeychain.passwordForService(CredentialKeys.TrackerApiKey.toRaw(), account: "StoryTracker")
         }
         set {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.setObject(newValue, forKey: UserDefaultKeys.TrackerApiKey.toRaw())
-            userDefaults.synchronize()
+            SSKeychain.setPassword(newValue, forService: CredentialKeys.TrackerApiKey.toRaw(), account: "StoryTracker")
         }
     }
     
