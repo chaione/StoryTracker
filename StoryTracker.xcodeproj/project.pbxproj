@@ -26,6 +26,7 @@
 		B58981FF1965CBEB004FE049 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58981FE1965CBEB004FE049 /* LoginViewController.swift */; };
 		B58982021965CC85004FE049 /* TrackerApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58982011965CC85004FE049 /* TrackerApiClient.swift */; };
 		B58982051965CEE4004FE049 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58982041965CEE4004FE049 /* Dispatch.swift */; };
+		B5987CD6198C4342000A3960 /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987CD5198C4342000A3960 /* StoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		B58981FE1965CBEB004FE049 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B58982011965CC85004FE049 /* TrackerApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerApiClient.swift; sourceTree = "<group>"; };
 		B58982041965CEE4004FE049 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		B5987CD5198C4342000A3960 /* StoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			children = (
 				B53A88E9195DDB5C0096E45E /* ProjectsViewController.swift */,
 				B58981FE1965CBEB004FE049 /* LoginViewController.swift */,
+				B5987CD5198C4342000A3960 /* StoriesViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5987CD6198C4342000A3960 /* StoriesViewController.swift in Sources */,
 				B58981FD1965C75C004FE049 /* CredentialStore.swift in Sources */,
 				B5232A731982CBD000E9DC97 /* Profile.swift in Sources */,
 				B53A88EA195DDB5C0096E45E /* ProjectsViewController.swift in Sources */,

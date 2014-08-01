@@ -36,9 +36,11 @@ class ProjectsViewController: UITableViewController {
     func listenForNotifications() {
         NSNotificationCenter.defaultCenter().addObserverForName(StoryTrackerNotifications.UserLoggedIn.toRaw(),
             object: nil,
-            queue: NSOperationQueue.mainQueue()) { [unowned self]
+            queue: NSOperationQueue.mainQueue()) { [weak self]
                 (notification) in
-                self.refreshProjects()
+                if let strongSelf = self {
+                    strongSelf.refreshProjects()
+                }
         }
     }
     
@@ -72,9 +74,18 @@ class ProjectsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("projectCell", forIndexPath: indexPath) as UITableViewCell
         let project = projectAtIndexPath(indexPath)
         cell.textLabel.text = project.name
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "storiesSegue" {
+            if let vc = segue.destinationViewController as? StoriesViewController {
+                let project = projectAtIndexPath(self.tableView.indexPathForSelectedRow())
+                vc.project = project
+            }
+        }
     }
 }
