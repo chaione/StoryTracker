@@ -107,7 +107,7 @@ class TrackerApiClient {
             if error == nil {
                 var projects = [Project]()
                 for projectJson in json! {
-                    projects += Project(attributes: projectJson)
+                    projects.append(Project(attributes: projectJson))
                 }
                 
                 Dispatch.main() {

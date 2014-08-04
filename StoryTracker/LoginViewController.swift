@@ -20,7 +20,7 @@ class LoginViewController: UITableViewController {
         println("logging in...")
         apiClient.login(usernameTextField.text, password: passwordTextField.text,
             completion: { (profile, errorResponse) in
-                if profile {
+                if profile != nil {
                     CredentialStore().trackerApiToken = profile!.apiToken
                     self.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName(StoryTrackerNotifications.UserLoggedIn.toRaw(),
@@ -37,7 +37,7 @@ class LoginViewController: UITableViewController {
             })
     }
     
-    init(coder aDecoder: NSCoder!)  {
+    required init(coder aDecoder: NSCoder!)  {
         super.init(coder: aDecoder)
     }
     

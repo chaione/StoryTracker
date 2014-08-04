@@ -52,7 +52,7 @@ class ProjectsViewController: UITableViewController {
         let apiToken = CredentialStore().trackerApiToken!
         TrackerApiClient().getProjects(apiToken) {
             (projects, errorResponse) in
-            if projects {
+            if projects != nil {
                 self.projects = projects!
                 self.tableView.reloadData()
             } else {

@@ -17,7 +17,7 @@ class StoriesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        if project {
+        if project != nil {
             return 5
         } else {
             return 0
